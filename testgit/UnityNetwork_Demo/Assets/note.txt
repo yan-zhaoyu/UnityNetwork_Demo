@@ -1,0 +1,56 @@
+The networking code itself can spawn the car and spawn the car and all of the other players which is what we want.With all of the networking objects attached to make sure that you "apply" it so that our prefab down here hets updated with all of the networking components.
+
+The players' names cannot be synchronized so far...
+
+AltspaceVR SDK sounds interesting
+
+【Youtube】
+Brackeys - Making a Multiplayer FPS in Unity 【very detailed building a FPS game】
+
+Setting up a Network Lobby by Holistic3d...
+
+All of the presentations are on single computer with server & clients.
+
+Photon unity networking from unity store.
+
+Experiments:
+> USpeak (in Photon demo worker application)
+
+
+> Photon √ （......）
+> Agora Interactive Gaming SDK
+> Tencent Cloud TRTC SDK
+Try these! 
+
+public class SceneObjectSpawn : NetworkBehaviour
+{
+    public List<gameobject> ServerPrefabs;
+ 
+    public override void OnStartServer()
+    {
+        for (int i = 0; i < ServerPrefabs.Count; i++)
+        {
+            GameObject obj = Instantiate(ServerPrefabs[i]) as GameObject;
+            NetworkServer.Spawn(obj);
+        }
+    }
+}</gameobject>
+核心的代码就是这个，在服务器启动的时候，将所有的prefab创建成对应的GameObject然后通过NetworkServer.Spawn(obj);在networkServer上生成，并在所有客户端上生成。[加载场景]
+Photon APPid：452926ec-7ec1-4925-b4be-dce868c400a8
+Agora   APPid：242f750ed52541be93d4d8b2e16dc7fd
+
+直播：facebook spatial workstation
+
+WEBRTC的核心组成
+音视频引擎：OPUS、VP8/VP9、H264；
+传输层协议：底层传输协议为UDP；
+媒体协议：SRTP/SRTCP；
+数据协议：DTLS/SCTP；
+P2P内网穿透：STUN/TURN/ICE/Trickle ICE；
+信令与SDP协商：HTTP/WebSocket/SIP. Offer Answer模型。
+
+
+作者：IT大咖说
+链接：https://juejin.im/post/5abc9ff75188255570061a05
+来源：掘金
+著作权归作者所有。
